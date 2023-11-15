@@ -36,4 +36,15 @@ constructor(
     this._authService.login(email, password)
   }
 
+  getCurrentUser() {
+    this._authService.getCurrentUser().then(user => {
+      if (user) {
+        console.log('Current user:', user);
+      } else {
+        console.log('User not logged in.');
+      }
+    });
+  }
+
+
 }

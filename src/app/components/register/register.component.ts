@@ -20,20 +20,27 @@ constructor(
     this.registerForm = this._formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
+      phone_number: ['', Validators.required],
+      name: ['', Validators.required],
 
     })
   }
 
   register() {
-    let email = this.registerForm.value.email
-    let password = this.registerForm.value.password
-    if(email === '') {
-      alert('Enter Email address')
+    const email = this.registerForm.value.email;
+    const password = this.registerForm.value.password;
+    const name = this.registerForm.value.name; 
+    const phoneNumber = this.registerForm.value.phone_number;
+  
+    if (email === '') {
+      alert('Enter Email address');
     }
-    if(password === '') {
-      alert('Enter Password')
+  
+    if (password === '') {
+      alert('Enter Password');
     }
-    this._authService.register(email, password)
+    this._authService.register(email, password, name, phoneNumber);
   }
+  
 
 }

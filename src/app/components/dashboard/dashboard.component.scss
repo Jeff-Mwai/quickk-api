@@ -1,0 +1,23 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  /* Make mat-toolbar full-width */
+  .mat-toolbar {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .custom-toolbar {
+    height: 100px; /* Adjust the height as needed */
+  }
+  .content-card {
+    // max-width: 400px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+  }
+  .acc-balance {
+    margin-bottom: 30px;
+  }
+  
+  
