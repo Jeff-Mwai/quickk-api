@@ -1,0 +1,41 @@
+/* login.component.scss */
+
+.form-card {
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  .required {
+    font-size: 14px;
+    color: red;
+  }
+  label, span {
+    display: inline;
+    margin-right: 5px; /* Adjust the margin as needed for spacing */
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-error {
+    font-size: 12px;
+    color: red;
+  }
+  
+  .form-button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+  }
+  .new-form {
+    margin-top: 200px;
+  }
+  

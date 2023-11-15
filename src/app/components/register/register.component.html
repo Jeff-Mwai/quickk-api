@@ -1,0 +1,33 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px" fxLayoutGap.xs="20px" fxFlexFill>
+    <div class="new-form">
+      <mat-card class="form-card">
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <label>Email Address</label><span aria-required="true" class="required"> * </span><br><br>
+            <mat-form-field appearance="outline" class="form-field" style="width: 100%;">
+              <mat-icon matPrefix>email</mat-icon>
+              <input formControlName="email" matInput placeholder="Enter your email" aria-required="true" type="text">
+              <mat-error *ngIf="!registerForm.hasError('email', 'required')">Email is required</mat-error>
+            </mat-form-field>
+     
+          </div>
+  
+          <div class="form-group">
+            <label>Password</label><span aria-required="true" class="required"> * </span><br><br>
+            <mat-form-field appearance="outline" class="form-field" style="width: 100%;">
+              <mat-icon matPrefix>lock</mat-icon>
+              <input formControlName="password" matInput placeholder="Enter your password" aria-required="true" type="password">
+              <mat-error *ngIf="!registerForm.hasError('password', 'required')">Password is required</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <button class="form-button" mat-raised-button color="primary" (click)="register()">Sign Up</button>
+  
+        </form>
+        <div fxLayout="row" style="margin-bottom: 10px;">
+          <a href="/login" style="text-decoration: none;"> Have an Account?<span> Sign In</span></a>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  
