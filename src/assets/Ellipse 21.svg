@@ -1,0 +1,15 @@
+<svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle id="Ellipse 21" opacity="0.3" cx="20.1946" cy="20.5893" r="19.5388" transform="rotate(-90 20.1946 20.5893)" fill="url(#paint0_linear_3_911)" stroke="url(#paint1_linear_3_911)" stroke-width="0.201086"/>
+<defs>
+<linearGradient id="paint0_linear_3_911" x1="11.2569" y1="0.949871" x2="35.7179" y2="30.9382" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_3_911" x1="0.555176" y1="5.64187" x2="42.015" y2="19.1817" gradientUnits="userSpaceOnUse">
+<stop offset="0.0572917" stop-color="white"/>
+<stop offset="0.244792" stop-color="#6CE5FF"/>
+<stop offset="0.651042" stop-color="#B570FE"/>
+<stop offset="0.869792" stop-color="white"/>
+</linearGradient>
+</defs>
+</svg>
