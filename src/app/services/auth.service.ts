@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/compat/auth'
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -14,14 +14,17 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
+  user$!: Observable<firebase.default.User | null>;
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
+  constructor(private fireAuth: AngularFireAuth, private router: Router) { 
+    this.user$ = this.fireAuth.authState;
+  }
 
   register(email: string, password: string, name: string, phoneNumber: string) {
     this.fireAuth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-  
+
         if (user) {
           // Update user profile with name
           user.updateProfile({
@@ -29,7 +32,7 @@ export class AuthService {
           })
           .then(() => {
             console.log('User registered with name:', user.displayName);
-  
+
             // Alert or navigate as needed
             alert('User Registered Successfully!');
             this.router.navigate(['/login']);
@@ -49,6 +52,7 @@ export class AuthService {
         this.router.navigate(['/register']);
       });
   }
+  
 
 login(email: string, password: string) {
   this.fireAuth.signInWithEmailAndPassword(email, password).then( () => {

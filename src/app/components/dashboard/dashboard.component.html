@@ -1,78 +1,111 @@
+<app-header></app-header>
 <div class="container">
     <div class="row">
-      <div class="col">
-        <mat-toolbar color="primary" class="custom-toolbar">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span>Quickk API</span>
-          <span class="example-spacer"></span>
-          <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
-          </button>
-        </mat-toolbar>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-7">
+        <div class="col">
             <mat-card class="content-card">
                 <mat-card-header>
-                  <mat-card-title-group>
-                    <mat-card-title class="acc-balance">Account Balance</mat-card-title>
-                    <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-                    <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" > -->
-                  </mat-card-title-group>
+                    <mat-card-title-group>
+                        <mat-card-title class="acc-balance">Account Balance</mat-card-title>
+
+                    </mat-card-title-group>
                 </mat-card-header>
                 <mat-card-content>
-                  <!-- {{longText}} -->
-                  <h1 style="font-size: 30px;"><strong>${{totalAmount}}</strong></h1>
-                  <p>Available</p>
+                    <!-- {{longText}} -->
+                    <h1 style="font-size: 30px;"><strong>${{totalAmount}}</strong></h1>
+                    <p>Available</p>
 
-                  <button class="form-button" mat-raised-button color="primary" (click)="displayForm()"><strong>Top Up</strong></button>
+                    <button class="form-button" mat-raised-button color="primary" (click)="displayForm()"><strong>Top
+                            Up</strong></button>
                 </mat-card-content>
-              </mat-card>
+            </mat-card>
+
+            <div style="margin-top: 50px; margin-bottom: 30px;">
+            <form [formGroup]="cashForm">
+                <!-- <div class="form-group"> -->
+                <label style="font-size: 30px;">Top Up</label><br><br>
+                <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
+                    <input formControlName="phone_number" matInput placeholder="Enter the phone number"
+                        aria-required="true" type="number" [readonly]="disableEdit">
+                    <mat-error *ngIf="!cashForm.hasError('phone_number', 'required')">Phone number is
+                        required</mat-error>
+                </mat-form-field>
+
+
+
+                <!-- <div class="form-group"> -->
+                <!-- <label>Amount</label> -->
+                <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
+                    <input formControlName="amount" matInput placeholder="Enter your amount" aria-required="true"
+                        type="number">
+                    <mat-error *ngIf="!cashForm.hasError('amount', 'required')">amount is required</mat-error>
+                </mat-form-field>
+                <!-- </div> -->
+
+                <button class="form-button" mat-raised-button color="primary" (click)="topUp()"
+                    [disabled]="cashForm.get('phone_number').value === '' || cashForm.get('amount').value === ''">Top
+                    Up</button>
+
+            </form>
+            </div>
         </div>
         <div class="col">
-        
+            <div>
+
+                <form [formGroup]="transferForm">
+                    <!-- <div class="form-group"> -->
+                    <label style="font-size: 30px;">Send Money To</label><br><br>
+                    <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
+                        <input formControlName="phone_number" matInput placeholder="Enter the phone number"
+                            aria-required="true" type="number">
+                        <mat-error *ngIf="!transferForm.hasError('phone_number', 'required')">Phone number is
+                            required</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
+                        <input formControlName="amount" matInput placeholder="Enter amount" aria-required="true"
+                            type="number">
+                        <mat-error *ngIf="!transferForm.hasError('amount', 'required')">amount is required</mat-error>
+                    </mat-form-field>
+                    <!-- </div> -->
+
+                    <button class="form-button" mat-raised-button color="primary" (click)="sendMoney()"
+                        [disabled]="transferForm.get('phone_number').value === '' || transferForm.get('amount').value === ''">Send
+                        Money</button>
+
+                </form>
+            </div>
+
+            <div class="table-data" *ngIf="transactionsDataSource.data.length > 0">
+                <h2>All Transactions</h2>
+                <table mat-table [dataSource]="transactionsDataSource" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="one">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element let i = index"> {{i+1}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="two">
+                        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                        <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="three">
+                        <th mat-header-cell *matHeaderCellDef> Amount </th>
+                        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
 
         </div>
     </div>
 
-    <div class="row mt-5" *ngIf="showForm">
-        <div class="col-7">
-            <!-- <mat-card class="form-card"> -->
-                <form [formGroup]="cashForm">
-                  <!-- <div class="form-group"> -->
-                    <label style="font-size: 30px;">Top Up</label><br><br>
-                    <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
-                      <input formControlName="phone_number" matInput placeholder="Enter the phone number" aria-required="true" type="number">
-                      <mat-error *ngIf="!cashForm.hasError('phone_number', 'required')">Email is required</mat-error>
-                    </mat-form-field>
-             
-                  
-          
-                  <!-- <div class="form-group"> -->
-                    <!-- <label>Amount</label> -->
-                    <mat-form-field appearance="outline" class="form-field custom-form-field" style="width: 100%;">
-                      <input formControlName="amount" matInput placeholder="Enter your amount" aria-required="true" type="number">
-                      <mat-error *ngIf="!cashForm.hasError('amount', 'required')">amount is required</mat-error>
-                    </mat-form-field>
-                  <!-- </div> -->
-          
-                  <button class="form-button" mat-raised-button color="primary" (click)="topUp()">Top Up</button>
-          
-                </form>
-                <!-- <div fxLayout="row" style="margin-bottom: 10px;">
-                  <a href="/register" style="text-decoration: none;">Don't Have an Account?<span> Sign Up</span></a>
-                </div> -->
-              <!-- </mat-card> -->
-    </div>
-    </div>
 
-  
-  </div>
-  
+
+</div>

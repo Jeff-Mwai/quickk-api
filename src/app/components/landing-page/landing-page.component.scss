@@ -1,25 +1,16 @@
 /* landing-page.component.scss */
-// .landing-container {
-//     max-width: 1200px;
-//     margin: auto;
-//     padding: 20px;
-// }
 
-
-
+/* General styles for larger screens */
 .section {
-    // margin-top: 70px;
     padding: 60px 0;
     background-color: black;
     color: white;
     height: 100vh;
-    // text-align: center;
 
     .content {
         max-width: 800px;
         margin-top: 170px;
         margin-left: 200px;
-        // margin: auto;
 
         h1, h2 {
             font-size: 3em;
@@ -37,47 +28,119 @@
 
 .section2 {
     margin-top: 50px;
-        // margin: auto;
+    height: 70vh;
 
-        h1, h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+    h1, h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
 
-        p {
-            font-size: 1em;
-            margin-bottom: 30px;
-        }
-    
+    p {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
 }
 
-/* Add responsive styles */
+/* Responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
     .section {
         padding: 40px 0;
+        text-align: center; /* Center align content */
+
+        .content {
+            margin: auto; /* Center align content */
+            max-width: 100%; /* Adjust width for smaller screens */
+
+            h1, h2 {
+                font-size: 2em;
+                color: white;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1em;
+                margin-bottom: 20px;
+                line-height: 40px;
+            }
+        }
     }
 
-    .content {
+    .section2 {
+        text-align: center; /* Center align content */
+
         h1, h2 {
             font-size: 2em;
-            color: white;
             margin-bottom: 15px;
         }
 
         p {
             font-size: 1em;
             margin-bottom: 20px;
-            line-height: 40px;
+            line-height: 1.5;
+        }
+
+        .phone-img {
+            .img-fluid,
+            .smaller-image {
+                width: 100%; /* Adjust width for smaller screens */
+            }
+
+            .smaller-image {
+                top: 0; /* Adjust the top position for smaller screens */
+                left: 0; /* Adjust the left position for smaller screens */
+            }
         }
     }
 }
 
-/* Add button styling */
-a {
+/* Add a new media query for screens less than 1520px */
+@media screen and (max-width: 1520px) {
+    .smaller-image {
+        display: none; /* Hide the smaller image */
+    }
+}
+
+/* Styles for the toolbar */
+mat-toolbar.custom-toolbar {
+    background-color: #28282B;
+    color: #fff;
+    height: 90px;
+}
+
+.custom-label {
+    margin-right: 20px;
+    color: white; /* Set the text color to white */
+    text-decoration: none; /* Remove the underline */
+}
+
+.custom-label:hover {
+    text-decoration: none; /* Remove the underline on hover */
+}
+
+.phone-img {
+    position: relative;
+
+    .img-fluid {
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+        height: auto;
+    }
+
+    .smaller-image {
+        position: absolute;
+        top: 170px;
+        left: 50px;
+        z-index: 1;
+        max-width: 80%; /* Adjust max-width for smaller screens */
+        height: auto;
+    }
+}
+
+/* Button styling */
+.get-started {
     font-size: 1.2em;
     text-decoration: none;
     padding: 10px 20px;
-    border: 2px solid #fff; /* Use a contrasting color for the button border */
+    border: 2px solid #fff;
     color: #fff;
     transition: background-color 0.3s, color 0.3s;
 
@@ -87,69 +150,26 @@ a {
     }
 }
 
+/* Card styles */
+mat-card.example-card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-mat-toolbar.custom-toolbar {
-    background-color: #28282B; /* Use the color code for black */
-    color: #fff; /* Set the text color to white or another contrasting color */
-    height: 120px
-  }
-
-  .phone-img {
-    position: relative; // Set position to relative
-
-    .img-fluid {
-      width: 100%;
-      height: auto;
+    .title {
+        font-size: xx-large;
+        margin-bottom: 10px;
     }
 
-    .smaller-image {
-      position: absolute;
-      top: 170px; // Adjust the top position as needed
-      left: 50px; // Adjust the left position as needed
-      z-index: 1; // Ensure it's above the larger image
-      width: 400px; // Set a suitable width
-      height: auto;
+    .p2 {
+        font-size: 1em;
     }
-  }
-/* Add button styling */
-a {
-    font-size: 1.2em;
-    text-decoration: none;
-    padding: 30px 30px;
-    background-color: #fff; /* Set background color to white */
-    color: #000; /* Set text color to black */
-    border: 2px solid #000; /* Set border color to black */
-    border-radius: 10px; /* Set border radius to create rounded corners */
-    transition: background-color 0.3s, color 0.3s;
-  
-    &:hover {
-      background-color: #000; /* Change background color on hover */
-      color: #fff; /* Change text color on hover */
-    }
-  }
+}
 
-  p {
-    line-height: 1.5; /* Adjust the value to achieve the desired spacing */
-    font-family: 'Your Chosen Font', sans-serif; /* Replace 'Your Chosen Font' with the desired font name */
-  }
-  .svg-image {
-    position: absolute;
-    // Adjust the positioning as needed
-    top: 50px;
-    left: 50px;
-    width: 50px; // Adjust the size as needed
-    height: auto;
-
-    // Add additional styling if needed
-    fill: #fff; // Change the fill color
-    stroke: #000; // Change the stroke color
-    stroke-width: 2; // Set the stroke width
-  }
-
-  .example-spacer {
+.example-spacer {
     flex: 1 1 auto;
-  }
-  .title {
-    font-size:xx-large;
+}
+
+.title {
+    font-size: xx-large;
     margin-bottom: 10px;
-  }
+}

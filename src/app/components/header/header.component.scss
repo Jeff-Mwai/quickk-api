@@ -1,0 +1,27 @@
+/* Styles for the toolbar */
+mat-toolbar.custom-toolbar {
+    background-color: #28282B;
+    color: #fff;
+    height: 90px;
+}
+
+.custom-label {
+    margin-right: 20px;
+    color: white; /* Set the text color to white */
+    text-decoration: none; /* Remove the underline */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: color 0.3s; /* Add a transition for smooth color change */
+}
+
+.custom-label:hover {
+    text-decoration: none; /* Remove the underline on hover */
+    color: #f5f5dc; /* Change the color to cream on hover */
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.title {
+    font-size: xx-large;
+    margin-bottom: 10px;
+}

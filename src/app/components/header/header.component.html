@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+        <mat-toolbar color="primary" class="custom-toolbar">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>money</mat-icon>
+            </button>
+            <!-- <span>Quickk API</span> -->
+            <a routerLink="" class="custom-label">Quickk API</a>
+
+            <span class="example-spacer"></span>
+
+            <!-- Add the link to Sign In -->
+            <a *ngIf="!isLoginPage() && !isDashboardPage()" routerLink="/login" class="custom-label">Sign In</a>
+
+            <!-- Add the link to Sign Up -->
+            <a *ngIf="isLoginPage()" routerLink="/register" class="custom-label">Sign Up</a>
+            <a *ngIf="isDashboardPage()" (click)="logOut()" class="custom-label">Logout</a>
+
+
+            <!-- Add the link to Features using ID -->
+            <a *ngIf="islandingPage()" href="#features" class="custom-label">Features</a>
+        </mat-toolbar>
+    </div>
+</div>

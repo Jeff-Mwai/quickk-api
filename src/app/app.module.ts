@@ -17,7 +17,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     FormsModule, 
     ReactiveFormsModule,
     MatCardModule,
-    MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatToolbarModule,
+    MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatToolbarModule, MatTableModule,
     AngularFireModule.initializeApp(environment.firebase), BrowserAnimationsModule
   ],
   providers: [],
